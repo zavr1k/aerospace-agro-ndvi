@@ -2,11 +2,11 @@ import uvicorn
 from fastapi import FastAPI
 
 from db.connection import database
-import urls
+from fields.api import router
 
 
-app = FastAPI()
-app.include_router(urls.router)
+app = FastAPI(title="NDVI")
+app.include_router(router, prefix="/fields")
 
 
 @app.on_event('startup')
@@ -21,12 +21,6 @@ async def shutdown() -> None:
     database_ = app.state.database = database
     if database_.is_connected:
         await database_.disconnect()
-
-
-@app.get('/')
-async def home():
-    response = 'Hello world!'
-    return {'key': response}
 
 
 if __name__ == '__main__':

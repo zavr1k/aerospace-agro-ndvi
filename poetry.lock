@@ -161,6 +161,21 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "geojson-pydantic"
+version = "0.4.0"
+description = "Pydantic data models for the GeoJSON spec."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+pydantic = "*"
+
+[package.extras]
+dev = ["pre-commit"]
+test = ["pytest", "pytest-cov", "shapely"]
+
+[[package]]
 name = "geomet"
 version = "0.3.0"
 description = "GeoJSON <-> WKT/WKB conversion utilities"
@@ -469,7 +484,7 @@ standard = ["websockets (>=10.0)", "httptools (>=0.4.0)", "watchgod (>=0.6)", "p
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "c154d82be6ff5a03cd4bded60a380fa8e79abf34d096a1cf4389de5bdb4465df"
+content-hash = "cd3033faccb2042ed440bab94c199a1bd7d9f6f33ce98f2640f4cb56323ec33b"
 
 [metadata.files]
 aiosqlite = [
@@ -547,6 +562,10 @@ flake8 = [
 geojson = [
     {file = "geojson-2.5.0-py2.py3-none-any.whl", hash = "sha256:ccbd13368dd728f4e4f13ffe6aaf725b6e802c692ba0dde628be475040c534ba"},
     {file = "geojson-2.5.0.tar.gz", hash = "sha256:6e4bb7ace4226a45d9c8c8b1348b3fc43540658359f93c3f7e03efa9f15f658a"},
+]
+geojson-pydantic = [
+    {file = "geojson-pydantic-0.4.0.tar.gz", hash = "sha256:5d7dc1f5d52b7465bf1dc13d0c360af060d7cba55b77c5bab66a63f5654ee06f"},
+    {file = "geojson_pydantic-0.4.0-py3-none-any.whl", hash = "sha256:a3933acc1aa470f8dd50480433479971109b1dd6bb38538fe3d2ee10f6507d5a"},
 ]
 geomet = [
     {file = "geomet-0.3.0-py3-none-any.whl", hash = "sha256:a3e55f5f7a5da116f05874acae93f612e2b5bdaa0724d008dfe13e68cb63f9b1"},

@@ -1,5 +1,5 @@
 import ormar
-from pydantic import Json
+from geojson_pydantic import Feature
 
 from db.connection import database, metadata
 
@@ -15,4 +15,4 @@ class Field(ormar.Model):
 
     id: int = ormar.Integer(primary_key=True, autoincrement=True)
     name: str = ormar.String(max_length=180)
-    geojson: Json = ormar.JSON()
+    geojson: Feature = ormar.JSON()
