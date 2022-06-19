@@ -5,14 +5,14 @@ description = ""
 authors = ["Anton <s.anton@live.ru>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 fastapi = "^0.78.0"
 uvicorn = "^0.17.6"
 python-dotenv = "^0.20.0"
-sentinelsat = "^1.1.1"
 ormar = {extras = ["postgresql"], version = "^0.11.0"}
 alembic = "^1.8.0"
 geojson-pydantic = "^0.4.0"
+earthengine-api = "^0.1.312"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

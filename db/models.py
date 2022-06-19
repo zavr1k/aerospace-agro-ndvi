@@ -1,18 +1,14 @@
 import ormar
-from geojson_pydantic import Feature
 
 from db.connection import database, metadata
 
 
-class BaseMeta(ormar.ModelMeta):
-    metadata = metadata
-    database = database
-
-
 class Field(ormar.Model):
-    class Meta(BaseMeta):
+    class Meta(ormar.ModelMeta):
         tablename = 'fields'
+        metadata = metadata
+        database = database
 
     id: int = ormar.Integer(primary_key=True, autoincrement=True)
     name: str = ormar.String(max_length=180)
-    geojson: Feature = ormar.JSON()
+    geojson = ormar.JSON()

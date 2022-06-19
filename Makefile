@@ -16,3 +16,5 @@ lint:
 prepare:
 	cp -n .env.example .env || true
 
+install:
+	poetry install
