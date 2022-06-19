@@ -28,7 +28,10 @@ async def create_field(field: CreateField) -> Field:
 
 @router.delete("/{pk}/delete")
 async def delete_field(pk: int) -> None:
-    return await Field.objects.delete(id=pk)
+    field = await Field.objects.get_or_none(id=pk)
+    if not field:
+        raise HTTPException(status_code=404, detail='Item not found')
+    return await field.delete()
 
 
 @router.post('/{pk}/image')
