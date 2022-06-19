@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from fastapi.responses import Response
 
 from db.models import Field
@@ -15,7 +15,10 @@ async def get_fields() -> list[Field]:
 
 @router.get("/{pk}")
 async def get_field_by_id(pk: int) -> Field:
-    return await Field.objects.get(id=pk)
+    field = await Field.objects.get_or_none(id=pk)
+    if not field:
+        raise HTTPException(status_code=404, detail='Item not found')
+    return field
 
 
 @router.post("/create")
@@ -30,13 +33,17 @@ async def delete_field(pk: int) -> None:
 
 @router.post('/{pk}/image')
 async def get_image(pk: int) -> Response:
-    field = await Field.objects.get(id=pk)
+    field = await Field.objects.get_or_none(id=pk)
+    if not field:
+        raise HTTPException(status_code=404, detail='Item not found')
     image_data = get_field_image(field)
     return Response(image_data, media_type='image/png')
 
 
 @router.post('/{pk}/ndvi')
 async def get_ndvi(pk: int) -> Response:
-    field = await Field.objects.get(id=pk)
+    field = await Field.objects.get_or_none(id=pk)
+    if not field:
+        raise HTTPException(status_code=404, detail='Item not found')
     ndvi_image_data = get_ndvi_image(field)
     return Response(ndvi_image_data, media_type='image/png')
