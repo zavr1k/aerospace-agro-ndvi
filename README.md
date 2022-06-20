@@ -1,5 +1,6 @@
 # Веб-сервис, определяющий NDVI.
 Веб сервис для выгрузки космических снимков и определяния NDVI на поле, предоставляя REST API.
+[Пример приложения](https://areaspace-agro.herokuapp.com/)
 
 ## Стек
 Python, Fast API
@@ -12,3 +13,4 @@ Python, Fast API
 
 ## Ресурсы
 1. Космические снимки получаются с помощью Google Earth Engine API
+
