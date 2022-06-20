@@ -13,7 +13,7 @@ app.include_router(router, prefix="/fields")
 @app.on_event('startup')
 async def startup() -> None:
     credentials = ee.ServiceAccountCredentials(
-        email=config.EE_SERVICE_ACCOUNT,
+        email=config.EE_CLIENT_EMAIL,
         key_file=config.PRIVATE_KEY
     )
     ee.Initialize(credentials=credentials)
