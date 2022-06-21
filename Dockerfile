@@ -1,5 +1,11 @@
-FROM fnndsc/python-poetry:1.1.13
+FROM python:3.9-slim
 
 WORKDIR /app
-COPY poetry.lock pyproject.toml ./
-RUN poetry install
+
+COPY requirements.txt ./
+
+RUN pip install -r requirements.txt
+
+COPY . ./
+
+EXPOSE 8080
